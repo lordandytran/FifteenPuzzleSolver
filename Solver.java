@@ -8,14 +8,15 @@ public class Solver {
     private HashSet<String> set;
 
     public Solver(PuzzleNode start) {
-        queue = new PriorityQueue<PuzzleNode>(new Comparator<PuzzleNode>() {
+        /*queue = new PriorityQueue<PuzzleNode>(new Comparator<PuzzleNode>() {
             @Override
             public int compare(PuzzleNode p1, PuzzleNode p2) {
                 if(p1.state.getState().equals(p2.state.getState()))
                     return 0;
                 return p1.state.getHeuristic() - p2.state.getHeuristic();
             }
-        });
+        });*/
+        queue = new PriorityQueue<PuzzleNode>((PuzzleNode p1, PuzzleNode p2) -> p1.state.getHeuristic() - p2.state.getHeuristic());
         set = new HashSet<String>();
         queue.add(start);
         set.add(start.state.getState());
